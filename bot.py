@@ -3,12 +3,14 @@ import discord
 from discord.ext import commands
 from discord.commands import Option
 import keep_alive
-from core.helperFunctions import cogHelpers, dataHelpers
+from core.helperFunctions import cogHelpers
+from core.helperFunctions import dataHelpers
 import os
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Variables:
-TOKEN = os.getenv("TOKEN")
+# TOKEN = os.getenv("TOKEN")
+TOKEN='MTE2NzM4ODI2NDE4MTgwOTE4Mw.GnTBC0.hr-n2izDIhml4RNXpfl2oAiLTeNJDsLuVhO6gg'
 
 client = commands.Bot(
     intents=discord.Intents.all()

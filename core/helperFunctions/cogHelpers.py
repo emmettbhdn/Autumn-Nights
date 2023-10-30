@@ -1,5 +1,5 @@
 import os
-from ..helperFunctions import dataHelpers
+from core.helperFunctions import dataHelpers
 
 def loadAllCogs(client):
     for filename in os.listdir(dataHelpers.COG_PATH):
@@ -19,3 +19,8 @@ def unloadAllCogs(client):
         else:
             print("Ignroed non-python file: " + filename)
             
+def getCogList():
+    cogList = []
+    for filename in os.listdir(dataHelpers.COG_PATH):
+        if filename.endswith(".py") and filename != "__init__.py":
+            cogList.append(filename[:-3])
