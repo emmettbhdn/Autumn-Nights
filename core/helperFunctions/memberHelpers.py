@@ -9,7 +9,6 @@ MEMBER_MESSAGES_DICT_PATH = uppath(__file__, 2) + "\\data\\weekly_messages.dat"
 def saveMemberMessageDict(dict):
     with open(MEMBER_MESSAGES_DICT_PATH, "wb") as f:
         pickle.dump(dict, f)
-        print("Updated the member messages dict")
 
 def loadMemberMessageDict():
     with open(MEMBER_MESSAGES_DICT_PATH, "rb") as f:
@@ -35,7 +34,7 @@ async def resetMemberMessageDict(guild):
         pickle.dump(dict(members_dict), f)
         print("Reset the member messages dict")
 
-async def getMembersList(guild, limit=None):
+async def getMembersList(guild, limit=None) -> discord.Member:
     members = await guild.fetch_members(limit=limit).flatten()
     return members
 

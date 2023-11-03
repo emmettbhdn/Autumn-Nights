@@ -41,6 +41,10 @@ class Core(commands.Cog):
     @discord.slash_command(name="ping", description="Displays the bot's latency(ping)", guild_ids=dataHelpers.SERVER_IDS)
     async def ping(self, ctx):
         await ctx.respond(f':ping_pong:Pong!\n```ini\n[{round(self.bot.latency * 1000)}ms]\n```')
+    
+    @discord.slash_command(name="test2", guild_ids=dataHelpers.SERVER_IDS)
+    async def test2(self, ctx):
+        await ctx.respond("Test 2 message")
 
 def setup(bot):
     bot.add_cog(Core(bot))

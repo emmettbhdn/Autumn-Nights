@@ -10,7 +10,7 @@ import os
 
 # Variables:
 # TOKEN = os.getenv("TOKEN")
-TOKEN='MTE2NzM4ODI2NDE4MTgwOTE4Mw.GnTBC0.hr-n2izDIhml4RNXpfl2oAiLTeNJDsLuVhO6gg'
+TOKEN='MTE2NzM4ODI2NDE4MTgwOTE4Mw.GnTBC0.hr-n2izDIhml4RNXpfl2oAiLTeNJDsLuVhO6gg' #TODO: Use the .env, not plaintext (or switch to replit ig)
 
 client = commands.Bot(
     intents=discord.Intents.all()
