@@ -22,7 +22,7 @@ client = commands.Bot(
 # Starts up the bot and tells me when it's ready
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="a movie"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="all your messages >:)"))
     print("SERVER_IDS constant intialized at " + str(dataHelpers.SERVER_IDS))
     print('Bot is ready!')
     
