@@ -71,7 +71,7 @@ async def reload(ctx, cogchoice: Option(str, "Enter the Cog that should get relo
 # Running and hosting
 
 # Sends a ping to the repl.it server so that it doesn't get taken down
-#keep_alive.keep_alive()
+keep_alive.keep_alive()
 
 # Load all cogs on startup
 # This has to happen before the on_ready event for some reason lol
