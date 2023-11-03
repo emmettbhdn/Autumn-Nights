@@ -9,7 +9,7 @@ import os
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Variables:
-TOKEN = os.getenv("TOKEN")
+TOKEN = os.environ["TOKEN"]
 
 client = commands.Bot(
     intents=discord.Intents.all()
