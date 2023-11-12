@@ -13,6 +13,9 @@ with open(MAIN_PATH + "/core/data/weekly_message_channel.txt", "r") as f:
 with open(MAIN_PATH + "/core/data/member_of_the_week_role.txt", "r") as f:
     MEMBER_OF_THE_WEEK_ROLE_ID = int(f.readline())
     
+with open(MAIN_PATH + "/core/data/random_chance_role.txt", "r") as f:
+    RANDOM_CHANCE_ROLE_ID = int(f.readline())
+    
 def getNthKeyInSortedDict(input_dict, n):
     sorted_key_list = list(dict(reversed(sorted(input_dict.items(), key=lambda item: item[1]))))
     return sorted_key_list[n]
