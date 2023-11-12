@@ -17,3 +17,6 @@ pyproject.toml
 .replit
 .upm/*
 .cache/*
+
+# VS Code files
+settings.json
