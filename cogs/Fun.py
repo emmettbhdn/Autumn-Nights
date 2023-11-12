@@ -25,7 +25,7 @@ class Fun(commands.Cog):
         if random.randint(1, 1) == 1: # 1 in 1000 Chance
             author = message.author
             guild = await self.bot.fetch_guild(dataHelpers.SERVER_IDS[0])
-            role = await guild.get_role(dataHelpers.RANDOM_CHANCE_ROLE_ID)
+            role = guild.get_role(dataHelpers.RANDOM_CHANCE_ROLE_ID)
             await message.reply("Congrats! You won the 1 in 1000 odds and have recieved the Cookie role!")
             await author.add_roles(role, reason="Random Chance Role")
             
