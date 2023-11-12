@@ -4,7 +4,7 @@ import pickle # Library to serialize python objects such as dicts
 import discord
 # from replit import db
 
-MEMBER_MESSAGES_DICT_PATH = uppath(__file__, 2) + "\\data\\weekly_messages.dat"
+MEMBER_MESSAGES_DICT_PATH = uppath(__file__, 2) + "/data/weekly_messages.dat"
 
 def saveMemberMessageDict(dict):
     with open(MEMBER_MESSAGES_DICT_PATH, "wb") as f:

@@ -6,6 +6,7 @@ import keep_alive
 from core.helperFunctions import cogHelpers
 from core.helperFunctions import dataHelpers
 import os
+import datetime
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Variables:
@@ -24,7 +25,7 @@ client = commands.Bot(
 async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="all your messages >:)"))
     print("SERVER_IDS constant intialized at " + str(dataHelpers.SERVER_IDS))
-    print('Bot is ready!')
+    print('Bot initialized at ' + str(datetime.datetime.now()))
     
 cogs = client.create_group("cogs", "Commands to load/unload Cogs (Admin Only)", checks=[commands.has_permissions(administrator=True)])
 
