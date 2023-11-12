@@ -13,12 +13,23 @@ class MemberOfTheWeek(commands.Cog):
 		# Member of the Week
 		@discord.slash_command(name="week_member_test", description="Tests the embed that will be used for the member of the week messages", guild_ids=dataHelpers.SERVER_IDS)
 		async def week_member_test(self, ctx):
-				embed=discord.Embed(title=f"Member of the Week: {(datetime.date.today() - datetime.timedelta(days=7)).strftime(r'%m/%d/%y')}  -  {datetime.date.today().strftime(r'%m/%d/%y')}", color=0xf38a44)
-				embed.add_field(name="Winner:", value="@ath404: 123 Messages!", inline=False)
-				embed.add_field(name="Runner-Up:", value="@Gorgulous-the-3st: 3 Messages!", inline=False)
-				embed.set_footer(text="Congratulations to the winners! To everyone else, better luck next week!")
-				await ctx.respond("Embed successfully generated!", ephemeral=True)
-				await ctx.send(embed=embed)
+				message_dict = memberHelpers.loadMemberMessageDict()
+
+				winner_member = memberHelpers.getMember(self.bot, dataHelpers.getNthKeyInSortedDict(message_dict, 0))
+				winner_messages = message_dict[winner_member.id]
+				runner_up_member = memberHelpers.getMember(self.bot, dataHelpers.getNthKeyInSortedDict(message_dict, 1))
+				runner_up_messages = message_dict[runner_up_member.id]
+
+				winner_embed = discord.Embed(
+						title=f"Member of the Week: {(datetime.date.today() - datetime.timedelta(days=7)).strftime(r'%m/%d/%y')}  -  {datetime.date.today().strftime(r'%m/%d/%y')}",
+						color=0xf38a44
+				)
+
+				winner_embed.add_field(name="Winner:", value=f"{winner_member.mention}: {winner_messages} messages!", inline=False)
+				winner_embed.add_field(name="Runner-Up:", value=f"{runner_up_member.mention}: {runner_up_messages} messages!", inline=False)
+				winner_embed.set_footer(text="Congratulations to the winners! To everyone else, better luck next week!")
+
+				await ctx.respond(embed=winner_embed)
 
 		@discord.slash_command(name="get_member_messages", guild_ids=dataHelpers.SERVER_IDS)
 		@commands.has_permissions(administrator=True)
@@ -44,6 +55,7 @@ class MemberOfTheWeek(commands.Cog):
 				dict = memberHelpers.loadMemberMessageDict()
 				del dict[member.id]
 				memberHelpers.saveMemberMessageDict(dict)
+
 
 		@commands.Cog.listener()
 		async def on_member_join(self, member):
