@@ -8,7 +8,7 @@ __pycache__
 *.log
 
 # Data files
-.dat
+*.dat
 
 # Replit files
 poetry.lock
