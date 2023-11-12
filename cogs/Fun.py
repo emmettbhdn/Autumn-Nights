@@ -22,7 +22,7 @@ class Fun(commands.Cog):
         
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        if random.randint(1, 1) == 1: # 1 in 1000 Chance
+        if random.randint(1, 1) == 1 and message.author.bot == False: # 1 in 1000 Chance
             author = message.author
             guild = await self.bot.fetch_guild(dataHelpers.SERVER_IDS[0])
             role = guild.get_role(dataHelpers.RANDOM_CHANCE_ROLE_ID)
