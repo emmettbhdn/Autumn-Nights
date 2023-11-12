@@ -9,3 +9,11 @@ __pycache__
 
 # Data files
 .dat
+
+# Replit files
+poetry.lock
+pyproject.toml
+.pythonlibs/*
+.replit
+.upm/*
+.cache/*
