@@ -19,7 +19,7 @@ class Random(commands.Cog):
     @random.command(name="number", description="Generates a random number in a range", guild_ids=dataHelpers.SERVER_IDS)
     async def random_number(self, ctx, min: Option(int, "Enter the minimum number", required=True, default=0), max: Option(int, "Enter the maximum number", required=True, default=100)):
         rand_num = random.randint(min, max)
-        await ctx.respond("Your number is " + rand_num)
+        await ctx.respond("Your number is " + str(rand_num))
      
         
 def setup(bot):
