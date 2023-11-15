@@ -27,7 +27,7 @@ async def on_ready():
     print("SERVER_IDS constant intialized at " + str(dataHelpers.SERVER_IDS))
     print('Bot initialized at ' + str(datetime.datetime.now()))
     
-cogs = client.create_group("cogs", "Commands to load/unload Cogs (Admin Only)", checks=[commands.has_permissions(administrator=True)])
+cogs = client.create_group("cogs", "Commands to load/unload Cogs (Admin Only)", checks=[commands.is_owner()])
 
 @cogs.command(description="Loads a Cog")
 async def load(ctx, cogchoice: Option(str, "Enter the Cog that should get loaded", required=True, default="all")):
