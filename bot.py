@@ -68,7 +68,7 @@ async def reload(ctx, cogchoice: Option(str, "Enter the Cog that should get relo
             client.load_extension("cogs." + cogchoice)
             await ctx.respond("Successfully reloaded Cog " + cogchoice)
         except Exception as e:
-            await ctx.respond(f"An error occurred while unloading the cog {cogchoice}! Please contact ath404 if you think something is broken and send him this: ```{e}```")
+            await ctx.respond(f"An error occurred while reloading the cog {cogchoice}! Please contact ath404 if you think something is broken and send him this: ```{e}```")
             
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
