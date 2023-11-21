@@ -33,7 +33,7 @@ cogs = client.create_group("cogs", "Commands to load/unload Cogs (Admin Only)", 
 async def load(ctx, cogchoice: Option(str, "Enter the Cog that should get loaded", required=True, default="all")):
     if cogchoice.lower() == "all":
         cogHelpers.loadAllCogs(ctx.bot)
-        ctx.respond("Successfully loaded in all Cogs")
+        await ctx.respond("Successfully loaded in all Cogs")
     else:
         try:
             client.load_extension("cogs." + cogchoice)
