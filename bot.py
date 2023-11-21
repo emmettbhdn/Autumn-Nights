@@ -27,9 +27,10 @@ async def on_ready():
     print("SERVER_IDS constant intialized at " + str(dataHelpers.SERVER_IDS))
     print('Bot initialized at ' + str(datetime.datetime.now()))
     
-cogs = client.create_group("cogs", "Commands to load/unload Cogs (Admin Only)", checks=[commands.is_owner()])
+cogs = client.create_group("cogs", "Commands to load/unload Cogs (Admin Only)")
 
 @cogs.command(description="Loads a Cog")
+@commands.is_owner()
 async def load(ctx, cogchoice: Option(str, "Enter the Cog that should get loaded", required=True, default="all")):
     if cogchoice.lower() == "all":
         cogHelpers.loadAllCogs(ctx.bot)
@@ -42,6 +43,7 @@ async def load(ctx, cogchoice: Option(str, "Enter the Cog that should get loaded
             await ctx.respond(f"An error occurred while loading the cog {cogchoice}! Please contact ath404 if you think something is broken and send him this: ```{e}```")
             
 @cogs.command(description="Unloads a Cog")
+@commands.is_owner()
 async def unload(ctx, cogchoice: Option(str, "Enter the Cog that should get unloaded", required=True, default="all")):
     if cogchoice.lower() == "all":
         cogHelpers.unloadAllCogs(ctx.bot)
@@ -54,6 +56,7 @@ async def unload(ctx, cogchoice: Option(str, "Enter the Cog that should get unlo
             await ctx.respond(f"An error occurred while unloading the cog {cogchoice}! Please contact ath404 if you think something is broken and send him this: ```{e}```")
 
 @cogs.command(description="Reloads a Cog")
+@commands.is_owner()
 async def reload(ctx, cogchoice: Option(str, "Enter the Cog that should get reloaded", required=True, default="all")):
     if cogchoice.lower() == "all":
         cogHelpers.unloadAllCogs(ctx.bot)
