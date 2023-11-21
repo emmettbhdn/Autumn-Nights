@@ -24,3 +24,4 @@ def getCogList():
     for filename in os.listdir(dataHelpers.COG_PATH):
         if filename.endswith(".py") and filename != "__init__.py":
             cogList.append(filename[:-3])
+    return cogList

@@ -46,6 +46,7 @@ class Core(commands.Cog):
     @discord.slash_command(name="test2", guild_ids=dataHelpers.SERVER_IDS)
     async def test2(self, ctx):
         await ctx.respond("Test 2 message")
+        print(ctx.bot.cogs)
 
 def setup(bot):
     bot.add_cog(Core(bot))

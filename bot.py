@@ -7,9 +7,11 @@ from core.helperFunctions import cogHelpers
 from core.helperFunctions import dataHelpers
 import os
 import datetime
+from dotenv import load_dotenv
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Variables:
+load_dotenv()
 TOKEN = os.environ["TOKEN"]
 
 client = commands.Bot(
@@ -69,7 +71,30 @@ async def reload(ctx, cogchoice: Option(str, "Enter the Cog that should get relo
             await ctx.respond("Successfully reloaded Cog " + cogchoice)
         except Exception as e:
             await ctx.respond(f"An error occurred while reloading the cog {cogchoice}! Please contact ath404 if you think something is broken and send him this: ```{e}```")
-            
+
+@cogs.command(name="status", description="Shows the status (loaded or unloaded) of all cogs")
+@commands.is_owner()
+async def cog_status(ctx):
+    cogs = cogHelpers.getCogList()
+    cog_statuses = {}
+    message = ""
+    for cog in cogs:
+        try:
+            client.load_extension("cogs." + cog)
+        except discord.ExtensionAlreadyLoaded:
+            cog_statuses[cog] = ":white_check_mark: Loaded"
+        except discord.ExtensionNotFound:
+            cog_statuses[cog] = ":question: Not Found"
+        except discord.ExtensionFailed:
+            cog_statuses[cog] = ":interrobang: Failed"
+        else:
+            cog_statuses[cog] = ":x: Unloaded"
+            client.unload_extension("cogs." + cog)
+
+        message += f"\n\n{cog}:      {cog_statuses[cog]}"
+        
+    await ctx.respond(message)
+    
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Running and hosting
