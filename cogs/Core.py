@@ -27,6 +27,7 @@ class Core(commands.Cog):
         await ctx.respond('Test successful!')
 
     @discord.slash_command(name="embed_test", description="General embed testing command", guild_ids=dataHelpers.SERVER_IDS)
+    @commands.has_permissions(administrator=True)
     async def embed_test(self, ctx):
         embed = discord.Embed(
             colour=discord.Colour.purple(),

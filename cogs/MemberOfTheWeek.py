@@ -12,6 +12,7 @@ class MemberOfTheWeek(commands.Cog):
 
 		# Member of the Week
 		@discord.slash_command(name="week_member_test", description="Tests the embed that will be used for the member of the week messages", guild_ids=dataHelpers.SERVER_IDS)
+		@commands.has_permissions(administrator=True)
 		async def week_member_test(self, ctx):
 				message_dict = memberHelpers.loadMemberMessageDict()
 
